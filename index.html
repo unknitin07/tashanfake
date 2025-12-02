@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tashan Win - India's premier skill-based gaming platform. Play exciting games, test your skills, and win real rewards.">
+    <meta name="keywords" content="Tashan Win, Tashan Win game, Tashan Win login, Tashan Win app, skill based gaming, online gaming India">
+    <title>Tashan Win | Skill-Based Gaming Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #fff9f0 50%, #ffffff 100%);
+            color: #8b6f47;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        header {
+            background: linear-gradient(135deg, #d4af37, #f4d03f, #d4af37);
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+            cursor: pointer;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: #ffffff;
+            margin: 5px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .nav-menu {
+            display: none;
+            position: absolute;
+            top: 75px;
+            right: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, #d4af37, #f4d03f);
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .nav-menu.active {
+            display: block;
+        }
+
+        .nav-menu a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 15px;
+            margin: 5px 0;
+            border-radius: 8px;
+            transition: 0.3s;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.2);
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .banner {
+            padding: 20px 15px;
+        }
+
+        .banner img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .container {
+            padding: 30px 15px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #d4af37, #f4d03f, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+        }
+
+        .intro {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            color: #8b6f47;
+            font-weight: 500;
+        }
+
+        .cta-section {
+            margin: 40px 0;
+        }
+
+        .cta-button {
+            display: block;
+            padding: 16px 40px;
+            margin: 15px auto;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #ffffff;
+            background: linear-gradient(135deg, #d4af37, #f4d03f, #d4af37);
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+            max-width: 280px;
+        }
+
+        .cta-button:active {
+            transform: scale(0.95);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.5);
+        }
+
+        footer {
+            background: linear-gradient(135deg, #d4af37, #f4d03f, #d4af37);
+            padding: 25px 15px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .footer-content p {
+            color: #ffffff;
+            margin: 8px 0;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .legal-content {
+            padding: 30px 20px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(244, 208, 63, 0.1));
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .legal-content h2 {
+            color: #d4af37;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+
+        .legal-content h3 {
+            color: #8b6f47;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .legal-content p, .legal-content ul {
+            text-align: left;
+            margin-bottom: 15px;
+            color: #5a3825;
+            font-size: 0.95em;
+        }
+
+        .legal-content ul {
+            margin-left: 20px;
+        }
+
+        @keyframes shine {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* Mobile optimization */
+        html {
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: rgba(212, 175, 55, 0.3);
+        }
+
+        button, a {
+            -webkit-tap-highlight-color: rgba(212, 175, 55, 0.3);
+            touch-action: manipulation;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="https://ossimg.tashanedc.com/Tashanwin/other/h5setting_202504041407319gth.png" alt="Tashan Win Logo" onclick="showPage('home')">
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <nav class="nav-menu" id="navMenu">
+            <a onclick="showPage('terms')">Terms & Conditions</a>
+            <a onclick="showPage('privacy')">Privacy Policy</a>
+            <a onclick="showPage('disclaimer')">Disclaimer</a>
+        </nav>
+    </header>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <div class="banner">
+            <img src="https://ossimg.tashanedc.com/Tashanwin/banner/Banner_2025113022111259lm.png" alt="Tashan Win Banner">
+        </div>
+
+        <div class="container">
+            <h1>Tashan Win</h1>
+            <p class="intro">India's Premier Skill-Based Gaming Platform</p>
+
+            <div class="cta-section">
+                <a href="https://www.tashanwin.net/#/register?invitationCode=383623173699" class="cta-button">Login Now</a>
+                <a href="https://www.tashanwin.net/#/register?invitationCode=383623173699" class="cta-button">Register Free</a>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2025 Tashan Win. All Rights Reserved.</p>
+                <p>Play Responsibly | Skill-Based Gaming Platform</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- TERMS PAGE -->
+    <div id="terms" class="page">
+        <div class="container">
+            <div class="legal-content">
+                <h2>Terms & Conditions</h2>
+                
+                <h3>1. Acceptance of Terms</h3>
+                <p>By accessing and using Tashan Win, you accept and agree to be bound by the terms and provisions of this agreement. If you do not agree to these terms, please do not use this platform.</p>
+
+                <h3>2. Eligibility</h3>
+                <p>Users must be at least 18 years of age to use Tashan Win. By using this platform, you represent and warrant that you meet this age requirement.</p>
+
+                <h3>3. Skill-Based Gaming</h3>
+                <p>Tashan Win is a skill-based gaming platform. All games require strategy, timing, and cognitive abilities. Outcomes are determined by player performance, not chance.</p>
+
+                <h3>4. User Account</h3>
+                <p>You are responsible for maintaining the confidentiality of your account credentials. All activities under your account are your responsibility.</p>
+
+                <h3>5. Fair Play Policy</h3>
+                <p>Tashan Win maintains a strict fair play policy. Any form of cheating, manipulation, or fraudulent activity will result in immediate account termination.</p>
+
+                <h3>6. Platform Usage</h3>
+                <p>Users agree to use the platform only for lawful purposes and in accordance with these terms. Prohibited activities include but are not limited to:</p>
+                <ul>
+                    <li>Using automated systems or bots</li>
+                    <li>Attempting to hack or compromise platform security</li>
+                    <li>Engaging in any form of harassment or abusive behavior</li>
+                    <li>Creating multiple accounts to gain unfair advantages</li>
+                </ul>
+
+                <h3>7. Modifications</h3>
+                <p>Tashan Win reserves the right to modify these terms at any time. Continued use of the platform constitutes acceptance of modified terms.</p>
+
+                <h3>8. Termination</h3>
+                <p>We reserve the right to suspend or terminate accounts that violate these terms or engage in prohibited activities.</p>
+
+                <h3>9. Contact</h3>
+                <p>For questions about these terms, please contact us through the app support section.</p>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2025 Tashan Win. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- PRIVACY PAGE -->
+    <div id="privacy" class="page">
+        <div class="container">
+            <div class="legal-content">
+                <h2>Privacy Policy</h2>
+                
+                <h3>1. Information Collection</h3>
+                <p>Tashan Win collects information necessary to provide our services, including:</p>
+                <ul>
+                    <li>Personal identification information (name, email, phone number)</li>
+                    <li>Account credentials and preferences</li>
+                    <li>Gaming activity and performance data</li>
+                    <li>Device information and IP addresses</li>
+                </ul>
+
+                <h3>2. Use of Information</h3>
+                <p>We use collected information to:</p>
+                <ul>
+                    <li>Provide and improve our gaming services</li>
+                    <li>Process transactions and maintain account security</li>
+                    <li>Communicate important updates and notifications</li>
+                    <li>Analyze platform usage and enhance user experience</li>
+                    <li>Detect and prevent fraudulent activities</li>
+                </ul>
+
+                <h3>3. Data Security</h3>
+                <p>Tashan Win implements industry-standard security measures to protect user data. We use encryption, secure servers, and regular security audits to safeguard your information.</p>
+
+                <h3>4. Third-Party Services</h3>
+                <p>We may use third-party services for payment processing, analytics, and platform functionality. These services have their own privacy policies and data handling practices.</p>
+
+                <h3>5. Data Sharing</h3>
+                <p>We do not sell or rent your personal information to third parties. Information may be shared only when:</p>
+                <ul>
+                    <li>Required by law or legal process</li>
+                    <li>Necessary to protect our rights or property</li>
+                    <li>With your explicit consent</li>
+                </ul>
+
+                <h3>6. Cookies and Tracking</h3>
+                <p>Tashan Win uses cookies and similar technologies to enhance user experience, analyze usage patterns, and maintain session security.</p>
+
+                <h3>7. User Rights</h3>
+                <p>You have the right to access, update, or delete your personal information. Contact our support team for data-related requests.</p>
+
+                <h3>8. Children's Privacy</h3>
+                <p>Tashan Win is not intended for users under 18 years of age. We do not knowingly collect information from minors.</p>
+
+                <h3>9. Policy Updates</h3>
+                <p>This privacy policy may be updated periodically. Continued use of Tashan Win after changes constitutes acceptance of the updated policy.</p>
+
+                <h3>10. Contact Information</h3>
+                <p>For privacy concerns or questions, please contact us through the app support section.</p>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2025 Tashan Win. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- DISCLAIMER PAGE -->
+    <div id="disclaimer" class="page">
+        <div class="container">
+            <div class="legal-content">
+                <h2>Disclaimer</h2>
+                
+                <h3>1. General Disclaimer</h3>
+                <p>Tashan Win is a skill-based gaming platform. The information and services provided are for entertainment purposes. Users engage with the platform at their own discretion and risk.</p>
+
+                <h3>2. Skill-Based Gaming</h3>
+                <p>Tashan Win operates exclusively as a skill-based gaming platform where outcomes depend on player abilities, strategy, and decision-making. This platform does not involve games of chance or gambling activities.</p>
+
+                <h3>3. No Guarantees</h3>
+                <p>While we strive to provide a seamless experience, Tashan Win makes no guarantees regarding:</p>
+                <ul>
+                    <li>Uninterrupted access to the platform</li>
+                    <li>Error-free operation at all times</li>
+                    <li>Specific gaming outcomes or results</li>
+                    <li>Achievement of particular performance levels</li>
+                </ul>
+
+                <h3>4. User Responsibility</h3>
+                <p>Users are solely responsible for:</p>
+                <ul>
+                    <li>Their gaming decisions and strategies</li>
+                    <li>Understanding game rules and mechanics</li>
+                    <li>Managing their time spent on the platform</li>
+                    <li>Ensuring compliance with local laws and regulations</li>
+                </ul>
+
+                <h3>5. Third-Party Links</h3>
+                <p>Tashan Win may contain links to third-party websites or services. We are not responsible for the content, privacy practices, or policies of these external sites.</p>
+
+                <h3>6. Limitation of Liability</h3>
+                <p>To the maximum extent permitted by law, Tashan Win and its operators shall not be liable for any direct, indirect, incidental, or consequential damages arising from platform use.</p>
+
+                <h3>7. Technical Issues</h3>
+                <p>Tashan Win is not liable for losses or damages resulting from technical failures, internet connectivity issues, device malfunctions, or force majeure events.</p>
+
+                <h3>8. Accuracy of Information</h3>
+                <p>We strive to provide accurate information but do not warrant the completeness or accuracy of all content on the platform. Information may be updated without prior notice.</p>
+
+                <h3>9. Age Restriction</h3>
+                <p>Tashan Win is intended only for users aged 18 and above. By using this platform, you confirm that you meet this age requirement.</p>
+
+                <h3>10. Jurisdictional Compliance</h3>
+                <p>Users are responsible for ensuring their use of Tashan Win complies with all applicable local, state, and national laws in their jurisdiction.</p>
+
+                <h3>11. Platform Changes</h3>
+                <p>Tashan Win reserves the right to modify, suspend, or discontinue any aspect of the platform at any time without prior notice.</p>
+
+                <h3>12. Responsible Gaming</h3>
+                <p>We encourage responsible gaming practices. Users should play within their limits and maintain a healthy balance between gaming and other life activities.</p>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2025 Tashan Win. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+
+        function showPage(pageName) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            document.getElementById(pageName).classList.add('active');
+            
+            document.getElementById('navMenu').classList.remove('active');
+            
+            window.scrollTo(0, 0);
+        }
+
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('navMenu');
+            const toggle = document.querySelector('.menu-toggle');
+            
+            if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+                menu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
